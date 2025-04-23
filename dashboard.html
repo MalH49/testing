@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome - Ganesh Hospital</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #d4efdf;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: black; /* Text color set to black */
+    }
+
+    .card {
+      background: white;
+      padding: 40px 60px;
+      border-radius: 16px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 80%;
+    }
+
+    h1 {
+      color: black; /* Header text color */
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      color: black; /* Paragraph text color */
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #117864;
+      color: white;
+    }
+
+    td {
+      background-color: #f2f2f2;
+      color: black;
+    }
+
+    .form-container {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #f7f7f7;
+      border-radius: 8px;
+      width: 80%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"], input[type="button"] {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 100%;
+      font-size: 16px;
+      color: black;
+    }
+
+    input[type="button"] {
+      background-color: #117864;
+      color: white;
+      cursor: pointer;
+    }
+
+    input[type="button"]:hover {
+      background-color: #0f5d48;
+    }
+
+    .delete-btn {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      background-color: #c0392b;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Welcome, Ganya!</h1>
+    <p>You have successfully logged into <strong>SHRI GANESH HOSPITAL</strong>.</p>
+
+    <!-- Patient Table -->
+    <h2>Patient List</h2>
+    <table id="patientTable">
+      <thead>
+        <tr>
+          <th>Patient Name</th>
+          <th>Disease</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ganesh</td>
+          <td>Fever</td>
+          <td><button class="delete-btn" onclick="deletePatient(this)">Delete</button></td>
+        </tr>
+        <tr>
+          <td>Sunya</td>
+          <td>Cold & Cough</td>
+          <td><button class="delete-btn" onclick="deletePatient(this)">Delete</button></td>
+        </tr>
+        <tr>
+          <td>Anya</td>
+          <td>Headache</td>
+          <td><button class="delete-btn" onclick="deletePatient(this)">Delete</button></td>
+        </tr>
+        <tr>
+          <td>Abrahim</td>
+          <td>Stomach Ache</td>
+          <td><button class="delete-btn" onclick="deletePatient(this)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Form to Add Patient -->
+    <div class="form-container">
+      <h3>Add a New Patient</h3>
+      <input type="text" id="newName" placeholder="Enter Patient Name" />
+      <input type="text" id="newDisease" placeholder="Enter Disease" />
+      <input type="button" value="Add Patient" onclick="addPatient()" />
+    </div>
+  </div>
+
+  <script>
+    function addPatient() {
+      const name = document.getElementById("newName").value.trim();
+      const disease = document.getElementById("newDisease").value.trim();
+
+      if (name === "" || disease === "") {
+        alert("Please enter both the name and the disease.");
+        return;
+      }
+
+      // Create a new row
+      const table = document.getElementById("patientTable").getElementsByTagName('tbody')[0];
+      const newRow = table.insertRow();
+
+      // Insert cells into the row
+      const cell1 = newRow.insertCell(0);
+      const cell2 = newRow.insertCell(1);
+      const cell3 = newRow.insertCell(2);
+
+      // Set the cell values
+      cell1.textContent = name;
+      cell2.textContent = disease;
+
+      // Add a delete button
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "Delete";
+      deleteBtn.classList.add("delete-btn");
+      deleteBtn.onclick = function() { deletePatient(deleteBtn); };
+      cell3.appendChild(deleteBtn);
+
+      // Clear the input fields
+      document.getElementById("newName").value = "";
+      document.getElementById("newDisease").value = "";
+    }
+
+    function deletePatient(button) {
+      const row = button.closest("tr"); // Find the row of the clicked delete button
+      row.remove(); // Remove the row from the table
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #d4efdf;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  color: black; /* Set all text to black */
+}
+
+.card {
+  background: white;
+  padding: 40px 60px;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 80%;
+}
+
+h1 {
+  color: black; /* Make the header text black */
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 18px;
+  color: black; /* Ensure paragraph text is black */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+table, th, td {
+  border: 1px solid #ccc;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #117864;
+  color: white;
+}
+
+td {
+  background-color: #f2f2f2;
+  color: black; /* Ensure the table text is black */
+}
+
+.form-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  width: 80%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"], input[type="button"] {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 16px;
+  color: black; /* Make input text black */
+}
+
+input[type="button"] {
+  background-color: #117864;
+  color: white;
+  cursor: pointer;
+}
+
+input[type="button"]:hover {
+  background-color: #0f5d48;
+}
